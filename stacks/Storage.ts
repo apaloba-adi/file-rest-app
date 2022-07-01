@@ -1,4 +1,4 @@
-import { Table, Bucket, StackContext } from "@serverless-stack/resources";
+import { Table, StackContext, RDS } from "@serverless-stack/resources";
 
 export function Storage({stack} : StackContext) {
     const table = new Table(
@@ -35,4 +35,16 @@ export function Storage({stack} : StackContext) {
             }
         }
     )
+
+    const log_info = new RDS(
+        stack, 'LogDB', {
+            engine : 'mysql5.7',
+            defaultDatabaseName : 'log_database'
+        }
+    )
+
+    return {
+        table,
+        log_info
+    }
 }

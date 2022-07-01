@@ -1,14 +1,11 @@
-import { MainStack } from "./MainStack";
+import { MainApi } from "./MainApi";
 import { App } from "@serverless-stack/resources";
 import { Storage } from "./Storage";
 
 export default function (app: App) {
   app.setDefaultFunctionProps({
-    runtime: "nodejs16.x",
-    srcPath: "services",
-    bundle: {
-      format: "esm",
-    },
+    runtime: 'python3.9',
+    srcPath: "services"
   });
-  app.stack(MainStack).stack(Storage);
+  app.stack(Storage).stack(MainApi);
 }
