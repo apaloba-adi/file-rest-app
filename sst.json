@@ -1,0 +1,5 @@
+{
+  "name": "file-rest-app",
+  "region": "us-east-1",
+  "main": "stacks/index.ts"
+}
